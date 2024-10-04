@@ -1,0 +1,41 @@
+% Read and display original image
+original_image = imread('cameraman.pgm');
+imshow(original_image);
+title('Original Image');
+disp(['Original Image Size: ', num2str(size(original_image))]);
+
+% Display last 2x2 block of original image
+disp('Last 2x2 block of original image:');
+disp(original_image(end-1:end, end-1:end));
+
+% Upsample the original image
+upsampled_image = upsampling(original_image);
+
+% Display upsampled image
+figure;
+imshow(upsampled_image);
+title('Upsampled Image');
+disp(['Upsampled Image Size: ', num2str(size(upsampled_image))]);
+
+% Display last 4x4 block of upsampled image
+disp('Last 4x4 block of upsampled image:');
+disp(upsampled_image(end-3:end, end-3:end));
+
+% Save upsampled image as cameraman2.pgm
+imwrite(upsampled_image, 'cameraman2.pgm');
+
+% Upsample the upsampled image again
+upsampled_image_2 = upsampling(upsampled_image);
+
+% Display upsampled image
+figure;
+imshow(upsampled_image_2);
+title('Upsampled Image 2');
+disp(['Upsampled Image 2 Size: ', num2str(size(upsampled_image_2))]);
+
+% Display last 8x8 block of upsampled image 2
+disp('Last 8x8 block of upsampled image 2:');
+disp(upsampled_image_2(end-7:end, end-7:end));
+
+% Save upsampled image 2 as cameraman4.pgm
+imwrite(upsampled_image_2, 'cameraman4.pgm');

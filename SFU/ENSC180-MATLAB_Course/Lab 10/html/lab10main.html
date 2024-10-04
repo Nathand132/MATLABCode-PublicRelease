@@ -1,0 +1,316 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      -->
+<title>lab10main</title>
+<meta name="generator" content="MATLAB 23.2">
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<meta name="DC.date" content="2024-03-28">
+<meta name="DC.source" content="lab10main.m">
+<style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style>
+</head>
+<body>
+<div class="content">
+<h2>Contents</h2>
+<div>
+<ul>
+<li>
+<a href="#1">Part 1</a>
+</li>
+<li>
+<a href="#2">Part 2</a>
+</li>
+<li>
+<a href="#3">Part 3</a>
+</li>
+</ul>
+</div>
+<h2 id="1">Part 1</h2>
+<pre class="codeinput">syms <span class="string">T</span> <span class="string">a</span> <span class="string">b</span> <span class="string">c</span> <span class="string">d</span> <span class="string">Cp</span>
+
+<span class="comment">% Define the symbolic equation</span>
+maineq = Cp == a+b*T+c*T^2+d*T^3
+
+<span class="comment">% Solve for T</span>
+symsol = solve(maineq,T)
+
+<span class="comment">% Substitute values</span>
+a=28.9
+b=-0.1587*10^-2
+c=0.8081*10^-5
+d=-2.873*10^-9
+Cp=30
+
+<span class="comment">% Redefine equation with sub values</span>
+numsol = subs(symsol)
+
+doublesol = double(numsol)
+
+vpssol = vpa(numsol)
+</pre>
+<pre class="codeoutput"> 
+maineq =
+ 
+Cp == d*T^3 + c*T^2 + b*T + a
+ 
+ 
+symsol =
+ 
+root(d*z^3 + c*z^2 + b*z + a - Cp, z, 1)
+root(d*z^3 + c*z^2 + b*z + a - Cp, z, 2)
+root(d*z^3 + c*z^2 + b*z + a - Cp, z, 3)
+ 
+
+a =
+
+   28.9000
+
+
+b =
+
+   -0.0016
+
+
+c =
+
+   8.0810e-06
+
+
+d =
+
+  -2.8730e-09
+
+
+Cp =
+
+    30
+
+ 
+numsol =
+ 
+root(z^3 - (976932954830581760*z^2)/347324387975283 + (191856527572841660416*z)/347324387975283 + 3324546003940230230441984/8683109699382075, z, 1)
+root(z^3 - (976932954830581760*z^2)/347324387975283 + (191856527572841660416*z)/347324387975283 + 3324546003940230230441984/8683109699382075, z, 2)
+root(z^3 - (976932954830581760*z^2)/347324387975283 + (191856527572841660416*z)/347324387975283 + 3324546003940230230441984/8683109699382075, z, 3)
+ 
+
+doublesol =
+
+   1.0e+03 *
+
+   -0.2739
+    0.5513
+    2.5353
+
+ 
+vpssol =
+ 
+-273.90585682398388197277183794894
+  551.3497327811733496691420748519
+ 2535.2954209450028344506689947106
+ 
+</pre>
+<h2 id="2">Part 2</h2>
+<pre class="codeinput">clear <span class="string">all</span>
+close <span class="string">all</span>
+
+syms <span class="string">x</span> <span class="string">a</span> <span class="string">b</span> <span class="string">c</span>
+
+integralexpression = a*x^2+b*x+c
+
+integralsolve = int(integralexpression,x,3.5,24)
+
+a = 1
+b = 2
+c = 3
+
+substited_int = subs(integralsolve)
+</pre>
+<pre class="codeoutput"> 
+integralexpression =
+ 
+a*x^2 + b*x + c
+ 
+ 
+integralsolve =
+ 
+(110249*a)/24 + (2255*b)/8 + (41*c)/2
+ 
+
+a =
+
+     1
+
+
+b =
+
+     2
+
+
+c =
+
+     3
+
+ 
+substited_int =
+ 
+125255/24
+ 
+</pre>
+<h2 id="3">Part 3</h2>
+<pre class="codeinput">clear <span class="string">all</span>
+close <span class="string">all</span>
+
+syms <span class="string">y</span> <span class="string">x</span>
+
+diffexpression = y == cos(2*x)*(sin(x))
+
+First_derivative = diff(diffexpression,1,x)
+Second_derivative = diff(diffexpression,2,x)
+</pre>
+<pre class="codeoutput"> 
+diffexpression =
+ 
+y == cos(2*x)*sin(x)
+ 
+ 
+First_derivative =
+ 
+0 == cos(2*x)*cos(x) - 2*sin(2*x)*sin(x)
+ 
+ 
+Second_derivative =
+ 
+0 == - 5*cos(2*x)*sin(x) - 4*sin(2*x)*cos(x)
+ 
+</pre>
+<p class="footer">
+<br>
+<a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2023b</a>
+<br>
+</p>
+</div>
+<!--
+##### SOURCE BEGIN #####
+%% Part 1
+
+syms T a b c d Cp
+
+% Define the symbolic equation
+maineq = Cp == a+b*T+c*T^2+d*T^3
+
+% Solve for T
+symsol = solve(maineq,T)
+
+% Substitute values
+a=28.9
+b=-0.1587*10^-2
+c=0.8081*10^-5
+d=-2.873*10^-9
+Cp=30
+
+% Redefine equation with sub values
+numsol = subs(symsol)
+
+doublesol = double(numsol)
+
+vpssol = vpa(numsol)
+
+%% Part 2
+
+clear all
+close all
+
+syms x a b c
+
+integralexpression = a*x^2+b*x+c
+
+integralsolve = int(integralexpression,x,3.5,24)
+
+a = 1
+b = 2 
+c = 3
+
+substited_int = subs(integralsolve)
+
+%% Part 3
+
+clear all
+close all
+
+syms y x
+
+diffexpression = y == cos(2*x)*(sin(x))
+
+First_derivative = diff(diffexpression,1,x)
+Second_derivative = diff(diffexpression,2,x)
+
+
+##### SOURCE END #####
+-->
+</body>
+</html>
