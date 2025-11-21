@@ -20,7 +20,7 @@ disp('Last 4x4 block of upsampled image:');
 disp(upsampled_image(end-3:end, end-3:end));
 
 % Save upsampled image as cameraman2.pgm
-saveas(gcf,'cameraman2.pgm')
+% saveas(gcf,'cameraman2.pgm'); no longer works as of 2025
 
 % Upsample the upsampled image again
 upsampled_image_2 = upsampling(upsampled_image);
@@ -35,4 +35,4 @@ disp('Last 8x8 block of upsampled image 2:');
 disp(upsampled_image_2(end-7:end, end-7:end));
 
 % Save upsampled image 2 as cameraman4.pgm
-saveas(gcf, 'cameraman4.pgm');
+%saveas(gcf, 'cameraman4.pgm'); no longer works as of 2025

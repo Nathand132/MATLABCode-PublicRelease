@@ -1,3 +1,5 @@
+%Use 100 as threashold as good example
+
 function dft(threshold)
     % Reset the random number generator
     rng("default");
